@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import ViewUI from 'view-design';
+import ViewUI from 'view-design'
 import i18n from '@/locale'
 import config from '@/config'
 import importDirective from '@/directive'
@@ -12,11 +12,13 @@ import { directive as clickOutside } from 'v-click-outside-x'
 import installPlugin from '@/plugin'
 import './index.less'
 import '@/assets/icons/iconfont.css'
-import "@/assets/css/util.less";
+import '@/assets/css/util.less'
 import TreeTable from 'tree-table-vue'
 import VOrgTree from 'v-org-tree'
 import 'v-org-tree/dist/v-org-tree.css'
 import * as echarts from 'echarts'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 Vue.prototype.$echarts = echarts
 // 实际打包时应该不引入mock
 /* eslint-disable */ //注释 不然导出excel报错内部错误无法打开文件
@@ -27,6 +29,7 @@ Vue.use(ViewUI, {
 })
 Vue.use(TreeTable)
 Vue.use(VOrgTree)
+Vue.use(ElementUI)
 /**
  * @description 注册admin内置插件
  */
@@ -51,5 +54,5 @@ new Vue({
   router,
   i18n,
   store,
-  render: h => h(App)
+  render: (h) => h(App)
 })

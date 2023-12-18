@@ -9,7 +9,7 @@ namespace NBCZ.BLL
 {
     public partial class BaseServiceDapperContrib<T> where T : class, new()
     {
-        BaseDataDapperContrib<T> dal = new BaseDataDapperContrib<T>();
+        BaseDataDapperContribMySql<T> dal = new BaseDataDapperContribMySql<T>();
         /// <summary>
         /// 插入
         /// </summary>
@@ -62,15 +62,15 @@ namespace NBCZ.BLL
         }
 
 
-        /// <summary>
-        /// 根据条件删除
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        public dynamic Delete(object predicate)
-        {
-            return dal.Delete(predicate);
-        }
+        ///// <summary>
+        ///// 根据条件删除
+        ///// </summary>
+        ///// <param name="model"></param>
+        ///// <returns></returns>
+        //public dynamic Delete(object predicate)
+        //{
+        //    return dal.Delete(predicate);
+        //}
 
         /// <summary>
         /// 根据条件删除
@@ -124,7 +124,7 @@ namespace NBCZ.BLL
         /// <returns></returns>
         public List<T> GetList(string where, string sort = null, int limits = -1, string fields = " * ", string orderby = "")
         {
-            return dal.GetList(where, sort, limits, fields, orderby);
+            return dal.GetList(where, sort, limits, fields);
 
         }
 

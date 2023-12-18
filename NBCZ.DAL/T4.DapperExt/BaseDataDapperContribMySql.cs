@@ -16,14 +16,14 @@ using MySqlConnector;
 
 namespace NBCZ.DAL
 {
-    public partial class BaseDataDapperContrib<T> where T : class ,new()
+    public partial class BaseDataDapperContribMySql<T> where T : class ,new()
     {
         /// <summary>
-        /// 插入
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        public long Insert(T model)
+		/// 插入
+		/// </summary>
+		/// <param name="model"></param>
+		/// <returns></returns>
+		public long Insert(T model)
         {
             dynamic r = null;
             using (MySqlConnection cn = new MySqlConnection(DapperHelper.ConnStr))
@@ -131,25 +131,6 @@ namespace NBCZ.DAL
             return r;
         }
 
-
-        /// <summary>
-        /// 根据条件删除
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        public dynamic Delete(object predicate)
-        {
-            dynamic r = null;
-            using (MySqlConnection cn = new MySqlConnection(DapperHelper.ConnStr))
-            {
-                cn.Open();
-                r = cn.Delete(predicate);
-                cn.Close();
-            }
-
-            return r;
-        }
-
         /// <summary>
         /// 根据条件删除
         /// </summary>
@@ -177,7 +158,7 @@ namespace NBCZ.DAL
             {
                 return false;
             }
-          
+
         }
         /// <summary>
         /// 根据实体删除
@@ -244,7 +225,7 @@ namespace NBCZ.DAL
 
         }
 
-      
+
 
         /// <summary>
         /// 根据条件查询实体列表
@@ -252,11 +233,11 @@ namespace NBCZ.DAL
         /// <param name="where"></param>
         /// <param name="sort"></param>
         /// <returns></returns>
-        public List<T> GetList(string where, string sort = null, int limits = -1, string fileds = " * ", string orderby = "")
+        public List<T> GetList(string where, string sort = null, int limits = -1, string fileds = " * ")
         {
             var tableName = typeof(T).Name;
-            StringBuilder sql = new StringBuilder().AppendFormat("SELECT " + fileds + "  FROM {0} {1} ",
-                tableName, (string.IsNullOrWhiteSpace(orderby) ? "" : (" order by " + orderby)));
+            StringBuilder sql = new StringBuilder().AppendFormat("SELECT " + fileds + "  FROM {0}  ",
+                tableName);
             if (!string.IsNullOrEmpty(where))
             {
                 sql.AppendFormat(" where {0} ", where);
@@ -267,8 +248,9 @@ namespace NBCZ.DAL
             }
             if (limits > 0)
             {
-                sql.AppendFormat(" limit {0} ", limits);
+                sql.AppendFormat($" limit {limits} ");
             }
+
             using (MySqlConnection cn = new MySqlConnection(DapperHelper.ConnStr))
             {
                 return cn.Query<T>(sql.ToString()).ToList();
@@ -293,27 +275,26 @@ namespace NBCZ.DAL
         {
             var tableName = typeof(T).Name;
             var p = new DynamicParameters();
-            p.Add("@TableName", tableName);
-            p.Add("@Fields", fields);
-            p.Add("@OrderField", sort);
-            p.Add("@sqlWhere", where);
-            p.Add("@pageSize", resultsPerPage);
-            p.Add("@pageIndex", page);
-            p.Add("@TotalPage", 0, direction: ParameterDirection.Output);
-            p.Add("@Totalrow", 0, direction: ParameterDirection.Output);
+            p.Add("@p_table_name", tableName);
+            p.Add("@p_fields", fields);
+            p.Add("@p_page_size", resultsPerPage);
+            p.Add("@p_page_now", page);
+            p.Add("@p_order_string", sort);
+            p.Add("@p_where_string", where);
+            p.Add("@p_out_rows", 0, direction: ParameterDirection.Output);
 
             using (MySqlConnection cn = new MySqlConnection(DapperHelper.ConnStr))
             {
 
-                var data = cn.Query<T>("P_ZGrid_PagingLarge", p, commandType: CommandType.StoredProcedure, commandTimeout: 120);
-                int totalPage = p.Get<int>("@TotalPage");
-                int totalrow = p.Get<int>("@Totalrow");
+                var data = cn.Query<T>("pr_pager", p, commandType: CommandType.StoredProcedure, commandTimeout: 120);
+                // int totalPage = p.Get<int>("@TotalPage");
+                int totalrow = p.Get<int>("@p_out_rows");
 
                 var rep = new PageDateRes<T>()
                 {
-                    code =ResCode.Success,
+                    code = ResCode.Success,
                     count = totalrow,
-                    totalPage = totalPage,
+                    totalPage = totalrow % resultsPerPage == 0 ? totalrow / resultsPerPage : totalrow / resultsPerPage + 1,
                     data = data.ToList(),
                     PageNum = page,
                     PageSize = resultsPerPage
@@ -328,11 +309,11 @@ namespace NBCZ.DAL
         /// </summary>
         /// <param name="where"></param>
         /// <returns></returns>
-        
+
         public bool ChangeSotpStatus(string where)
         {
             var tableName = typeof(T).Name;
-            string sql = "UPDATE "+tableName+" SET StopFlag =1 ";
+            string sql = "UPDATE " + tableName + " SET StopFlag =1 ";
             if (string.IsNullOrWhiteSpace(where))
             {
                 return false;

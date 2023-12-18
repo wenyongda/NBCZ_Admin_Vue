@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using Dapper;
 using System.Data;
+using MySqlConnector;
 
 namespace NBCZ
 {
@@ -23,7 +24,7 @@ namespace NBCZ
         public static int Excute(string sql, object param=null, 
             IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = null)
         {
-            using (IDbConnection conn = new SqlConnection(connStr))
+            using (IDbConnection conn = new MySqlConnection(connStr))
             {
                 return conn.Execute(sql, param, transaction, commandTimeout, commandType);
             }
@@ -36,7 +37,7 @@ namespace NBCZ
         /// <returns></returns>
         public static DataTable ExecuteReaderToTable(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = null)
         {
-            using (IDbConnection conn = new SqlConnection(connStr))
+            using (IDbConnection conn = new MySqlConnection(connStr))
             {
                 var reader = conn.ExecuteReader(sql, param, transaction, commandTimeout, commandType);
                 DataTable tb = new DataTable();
@@ -55,7 +56,7 @@ namespace NBCZ
         public static List<T> Query<T>(string sql, object param=null,
            IDbTransaction transaction = null, bool buffered = true, int? commandTimeout = null, CommandType? commandType = null)
         {
-            using (IDbConnection conn = new SqlConnection(connStr))
+            using (IDbConnection conn = new MySqlConnection(connStr))
             {
                 return conn.Query<T>(sql, param, transaction, buffered, commandTimeout, commandType).ToList();
             }
@@ -70,7 +71,7 @@ namespace NBCZ
         /// <returns></returns>
         public static T QueryFirst<T>(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = null)
         {
-            using (IDbConnection conn = new SqlConnection(connStr))
+            using (IDbConnection conn = new MySqlConnection(connStr))
             {
                 return conn.QueryFirst<T>(sql, param, transaction, commandTimeout, commandType);
             }
@@ -89,7 +90,7 @@ namespace NBCZ
         public static SqlMapper.GridReader QueryMultiple(string sql, object param=null,
          IDbTransaction transaction = null, bool buffered = true, int? commandTimeout = null, CommandType? commandType = null)
         {
-            using (IDbConnection conn = new SqlConnection(connStr))
+            using (IDbConnection conn = new MySqlConnection(connStr))
             {
                 return conn.QueryMultiple(sql, param,transaction,commandTimeout,commandType);
             }
@@ -104,7 +105,7 @@ namespace NBCZ
         public static object ExecuteScalar(string sql, object param=null,
            IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = null)
         {
-            using (IDbConnection conn = new SqlConnection(connStr))
+            using (IDbConnection conn = new MySqlConnection(connStr))
             {
                 return conn.ExecuteScalar(sql, param, transaction, commandTimeout, commandType);
             }
@@ -131,7 +132,7 @@ namespace NBCZ
         /// <returns></returns>
         public static bool ExecTransaction(Dictionary<string, object> dic, List<string> proName = null)
         {
-            using (IDbConnection conn = new SqlConnection(connStr))
+            using (IDbConnection conn = new MySqlConnection(connStr))
             {
                 conn.Open();
                 using (var transaction = conn.BeginTransaction())

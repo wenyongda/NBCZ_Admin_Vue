@@ -12,7 +12,7 @@ using NBCZ.Model;
 
 namespace NBCZ.DAL
 {	
-	public partial class Pub_FunctionDAL:BaseDataDapperContrib<Pub_Function>
+	public partial class Pub_FunctionDAL:BaseDataDapperContribMySql<Pub_Function>
     { 
 		
     }
