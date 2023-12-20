@@ -13,7 +13,7 @@
           <Button class="search-btn" type="primary" @click="setPageData(1)">
             <Icon type="search" />&nbsp;&nbsp;搜索
           </Button>
-          <el-button type="primary">主要按钮</el-button>
+          <el-button type="primary" @click="value++">主要按钮{{ value }}</el-button>
         </FormItem>
       </Form>
     </div>
@@ -62,6 +62,7 @@ import Edit from './Edit'
 import Permission from './Permission'
 import { getPage, remove as removeUser } from '@/api/pubUser'
 import { pubUser } from '@/access/pubUser'
+import { ref } from 'vue'
 
 export default {
   name: 'USERINFO', // 与 router.js notCache:fasle且name相同 将缓存组件。
@@ -69,6 +70,10 @@ export default {
     // Tables
     Edit,
     Permission
+  },
+  setup() {
+    const value = ref(0)
+    return { value }
   },
   data() {
     const userAccessAll = this.$store.state.user.access

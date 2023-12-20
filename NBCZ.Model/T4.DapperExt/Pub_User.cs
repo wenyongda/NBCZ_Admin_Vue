@@ -25,11 +25,6 @@ namespace NBCZ.Model
 		public int Id { get; set; }
 
 		/// <summary>
-     	/// 登录用户名
-     	/// </summary>
-		public string UserCode { get; set; }
-
-		/// <summary>
      	/// 昵称/用户名
      	/// </summary>
 		public string UserName { get; set; }
@@ -43,6 +38,11 @@ namespace NBCZ.Model
      	/// 登录密码
      	/// </summary>
 		public string UserPwd { get; set; }
+
+		/// <summary>
+     	/// 登录用户名
+     	/// </summary>
+		public string UserCode { get; set; }
 
 		/// <summary>
      	/// 性别

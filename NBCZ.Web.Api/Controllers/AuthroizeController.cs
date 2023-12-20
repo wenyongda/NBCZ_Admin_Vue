@@ -1,15 +1,13 @@
-﻿using NBCZ.BLL;
-using NBCZ.Common;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
+using NBCZ.BLL;
+using NBCZ.Common;
+using NBCZ.Model;
+using SqlSugar;
 using WebApi.Jwt;
 
-
-namespace NBCZ.Web.Api
+namespace NBCZ.Web.Api.Controllers
 {
     /// <summary>
     /// 认证
@@ -17,7 +15,15 @@ namespace NBCZ.Web.Api
     [Route("api/Authroize")]
     public class AuthroizeController : ApiController
     {
-             /// <summary>
+        private readonly ISqlSugarClient db;
+
+        public AuthroizeController(ISqlSugarClient db)
+        {
+            this.db = db;
+        }
+
+
+        /// <summary>
         /// 登录获取token
         /// </summary>
         /// <param name="loginViewModel">登录实体信息</param>
@@ -26,7 +32,7 @@ namespace NBCZ.Web.Api
         [HttpPost]
         public IHttpActionResult Post([FromBody]LoginViewModel loginViewModel)
         {
-
+            var ob = db.Ado.SqlQuery<Pub_User>("select * from pub_user");
             if (!ModelState.IsValid)
             {
                 return BadRequest();
