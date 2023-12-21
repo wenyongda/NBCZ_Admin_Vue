@@ -59,7 +59,7 @@ namespace NBCZ.Web.Api
                 return false;
 
             var usernameClaim = identity.FindFirst(ClaimTypes.Name);
-            username = usernameClaim==null ?null: usernameClaim.Value;
+            username = usernameClaim?.Value;
 
             if (string.IsNullOrEmpty(username))
                 return false;

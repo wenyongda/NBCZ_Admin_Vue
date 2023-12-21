@@ -1,0 +1,26 @@
+{
+  "login": {
+    "account": "ID",
+    "password": "Password",
+    "captcha": "Captcha",
+    "btnLogin": "Login",
+    "rememberMe": "Remember Me",
+    "loginSuccess": "login success",
+    "loginTimeOut": "Login status has expired, please log in again",
+    "reLogin": "re-register",
+    "invalidSession": "Invalid session, or session has expired, please log in again.",
+    "otherLoginWay": "Other",
+    "register": "Sign up now",
+    "toLoginByEmail": "Log in By Email",
+    "btnLoginLoading": "Loginning..."
+  },
+  "loginByEmail": {
+    "toLogin": "Log in By Password",
+    "email": "Email",
+    "getDragVerify": "Get Verify Code",
+    "checkDragVerifyDuration": "Try again in seconds"
+  },
+  "roleSelectDialog": {
+    "close": "Dialog closes,please re-enter the CAPTCHA"
+  }
+}

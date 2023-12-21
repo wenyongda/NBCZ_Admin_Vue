@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Web;
 using System.Web.Http;
 using NBCZ.BLL;
 using NBCZ.Common;
@@ -12,7 +13,7 @@ namespace NBCZ.Web.Api.Controllers
     /// <summary>
     /// 认证
     /// </summary>
-    [Route("api/Authroize")]
+    // [Route("api/Authroize")]
     public class AuthroizeController : ApiController
     {
         private readonly ISqlSugarClient db;
@@ -28,8 +29,9 @@ namespace NBCZ.Web.Api.Controllers
         /// </summary>
         /// <param name="loginViewModel">登录实体信息</param>
         /// <returns></returns>
-        [AllowAnonymous]
+        // [AllowAnonymous]
         [HttpPost]
+        [Route("login")]
         public IHttpActionResult Post([FromBody]LoginViewModel loginViewModel)
         {
             var ob = db.Ado.SqlQuery<Pub_User>("select * from pub_user");
@@ -52,7 +54,7 @@ namespace NBCZ.Web.Api.Controllers
             
                 return Ok(new ResponseObj<dynamic>()
                 {
-                    Code = 1,
+                    Code = 200,
                     Message = "认证成功",
                     Data =new
                     {
@@ -70,6 +72,46 @@ namespace NBCZ.Web.Api.Controllers
             //return BadRequest();
         }
 
+        // [JwtAuthentication]
+        [HttpPost]
+        [Route("logout")]
+        public IHttpActionResult Logout()
+        {
+            var user = User.GetNBCZUser();
+            var userId = user.Id;
+            var name = user.UserName;
+            return Ok(new ResponseObj<dynamic>()
+            {
+                Code = 200,
+                Message = "成功",
+                Data = new
+                {
+                    name,
+                    id = userId
+                }
+            });
+        }
+        
+        [JwtAuthentication]
+        [HttpGet]
+        [Route("getInfo")]
+        public IHttpActionResult GetInfo()
+        {
+            var user = User.GetNBCZUser();
+            var userId = user.Id;
+            var name = user.UserName;
+            return Ok(new ResponseObj<dynamic>()
+            {
+                Code = 200,
+                Message = "成功",
+                Data = new
+                {
+                    name,
+                    id = userId
+                }
+            });
+        }
+        
         public class ResponseObj<T>
         {
             /// <summary>

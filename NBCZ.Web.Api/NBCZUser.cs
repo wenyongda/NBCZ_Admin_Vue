@@ -13,10 +13,10 @@ namespace NBCZ.Web.Api
     {
         public static NBCZUser GetNBCZUser(this IPrincipal user)
         {
-            if (!user.Identity.IsAuthenticated)
-            {
-                return null;
-            }
+            // if (!user.Identity.IsAuthenticated)
+            // {
+            //     return null;
+            // }
             return new NBCZUser(user);
         }
     }

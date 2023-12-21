@@ -96,6 +96,7 @@
     <Compile Include="DataCache.cs" />
     <Compile Include="DBHelper.cs" />
     <Compile Include="ExcelHelper.cs" />
+    <Compile Include="HttpContextExtension.cs" />
     <Compile Include="LimitedConcurrencyLevelTaskScheduler.cs" />
     <Compile Include="LogHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
