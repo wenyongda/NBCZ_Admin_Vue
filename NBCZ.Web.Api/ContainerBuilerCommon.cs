@@ -3,8 +3,10 @@ using System.Reflection;
 using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
+using NBCZ.BLL;
 using NBCZ.BLL.T4.DapperExt;
 using NBCZ.Common;
+using NBCZ.DBUtility;
 
 namespace NBCZ.Web.Api
 {
@@ -28,7 +30,9 @@ namespace NBCZ.Web.Api
             }
             HttpConfiguration config = GlobalConfiguration.Configuration;
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            
             SqlSugarSetup.AddDb(builder);
+            builder.RegisterGeneric(typeof(BaseRepository<>));
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }

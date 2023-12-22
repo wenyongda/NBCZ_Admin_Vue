@@ -10,13 +10,15 @@ namespace NBCZ.BLL.T4.DapperExt
     public static class SqlSugarSetup
     {
         private static ILog log = LogManager.GetLogger(typeof(SqlSugarSetup));
+
+        private static readonly string connStr = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
+
         /// <summary>
         /// 初始化db
         /// </summary>
         /// <param name="builder"></param>
         public static void AddDb(ContainerBuilder builder)
         {
-            var connStr = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
             var sqlSugarClient = new SqlSugarClient(new ConnectionConfig()
                 {
                     DbType = DbType.MySqlConnector,

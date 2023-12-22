@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using NBCZ.BLL;
+using NBCZ.BLL.Services.IService;
 using NBCZ.Common;
 using NBCZ.Model;
 using SqlSugar;
@@ -14,13 +15,15 @@ namespace NBCZ.Web.Api.Controllers
     /// 认证
     /// </summary>
     // [Route("api/Authroize")]
+    [JwtAuthentication]
     public class AuthroizeController : ApiController
     {
         private readonly ISqlSugarClient db;
-
-        public AuthroizeController(ISqlSugarClient db)
+        private readonly IPubUserService _pubUserService;
+        public AuthroizeController(ISqlSugarClient db, IPubUserService pubUserService)
         {
             this.db = db;
+            _pubUserService = pubUserService;
         }
 
 
@@ -29,10 +32,9 @@ namespace NBCZ.Web.Api.Controllers
         /// </summary>
         /// <param name="loginViewModel">登录实体信息</param>
         /// <returns></returns>
-        // [AllowAnonymous]
-        [HttpPost]
-        [Route("login")]
-        public IHttpActionResult Post([FromBody]LoginViewModel loginViewModel)
+        [AllowAnonymous]
+        [HttpPost, Route("login")]
+        public IHttpActionResult Login([FromBody]LoginViewModel loginViewModel)
         {
             var ob = db.Ado.SqlQuery<Pub_User>("select * from pub_user");
             if (!ModelState.IsValid)
@@ -71,10 +73,9 @@ namespace NBCZ.Web.Api.Controllers
             });
             //return BadRequest();
         }
-
-        // [JwtAuthentication]
-        [HttpPost]
-        [Route("logout")]
+        
+        [AllowAnonymous]
+        [HttpPost, Route("logout")]
         public IHttpActionResult Logout()
         {
             var user = User.GetNBCZUser();
@@ -92,14 +93,13 @@ namespace NBCZ.Web.Api.Controllers
             });
         }
         
-        [JwtAuthentication]
-        [HttpGet]
-        [Route("getInfo")]
+        [HttpGet, Route("getInfo")]
         public IHttpActionResult GetInfo()
         {
             var user = User.GetNBCZUser();
             var userId = user.Id;
             var name = user.UserName;
+            var selectUserById = _pubUserService.SelectUserById(userId);
             return Ok(new ResponseObj<dynamic>()
             {
                 Code = 200,

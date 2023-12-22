@@ -46,7 +46,7 @@
             认证
             </summary>
         </member>
-        <member name="M:NBCZ.Web.Api.Controllers.AuthroizeController.Post(NBCZ.Web.Api.LoginViewModel)">
+        <member name="M:NBCZ.Web.Api.Controllers.AuthroizeController.Login(NBCZ.Web.Api.LoginViewModel)">
             <summary>
             登录获取token
             </summary>

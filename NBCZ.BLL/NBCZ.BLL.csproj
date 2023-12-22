@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NBCZ.BLL</RootNamespace>
     <AssemblyName>NBCZ.BLL</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -74,11 +74,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseService.cs" />
+    <Compile Include="IBaseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Pub_DepartmentBLL.cs" />
     <Compile Include="Pub_FunctionBLL.cs" />
     <Compile Include="Pub_RoleBLL.cs" />
     <Compile Include="Pub_UserBLL.cs" />
+    <Compile Include="Services\IService\IPubUserService.cs" />
+    <Compile Include="Services\PubUserService.cs" />
     <Compile Include="T4.DapperExt\BaseServiceDapperContrib.cs" />
     <Compile Include="T4.DapperExt\Pub_DepartmentBLL.cs">
       <DependentUpon>Service.tt</DependentUpon>
@@ -120,6 +124,10 @@
     <ProjectReference Include="..\NBCZ.DAL\NBCZ.DAL.csproj">
       <Project>{6ee38d2e-da58-4978-83eb-25335aac3302}</Project>
       <Name>NBCZ.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NBCZ.DBUtility\NBCZ.DBUtility.csproj">
+      <Project>{94c6f951-eeb4-4503-b7ee-48104dc59cb2}</Project>
+      <Name>NBCZ.DBUtility</Name>
     </ProjectReference>
     <ProjectReference Include="..\NBCZ.Model\NBCZ.Model.csproj">
       <Project>{e3560d2c-b1ae-41bd-8a18-1de9b9a6a0ba}</Project>

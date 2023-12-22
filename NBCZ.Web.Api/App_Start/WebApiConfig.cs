@@ -17,7 +17,7 @@ namespace NBCZ.Web.Api
 			//http://localhost:51534/swagger/ui/index
 			if (ConfigurationManager.AppSettings["isShowDoc"] == "1") { SwaggerConfig.Register(); }
             // Web API configuration and services
-            // config.Filters.Add(new AuthorizeAttribute());
+            config.Filters.Add(new AuthorizeAttribute());
 
             // Web API routes
             config.MapHttpAttributeRoutes();

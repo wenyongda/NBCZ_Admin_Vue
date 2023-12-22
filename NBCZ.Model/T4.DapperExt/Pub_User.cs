@@ -10,11 +10,13 @@
 
 using System;
 using Dapper.Contrib.Extensions;
+using SqlSugar;
 
 namespace NBCZ.Model
 {	
    
    [Table("Pub_User")]
+    [SugarTable("Pub_User")]
     public partial class Pub_User
     {
 
@@ -22,6 +24,7 @@ namespace NBCZ.Model
      	/// 自增主键
      	/// </summary>
 		[Key]
+        [SugarColumn(IsPrimaryKey = true)]
 		public int Id { get; set; }
 
 		/// <summary>

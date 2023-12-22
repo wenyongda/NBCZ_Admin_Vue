@@ -14,7 +14,7 @@ using NBCZ.DAL;
 
 namespace NBCZ.BLL
 {	
-	public partial class Pub_UserBLL:BaseServiceDapperContrib<Model.Pub_User>
+	public partial class Pub_UserBLL: BaseServiceDapperContrib<Pub_User>
     {
      
 

@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NBCZ.Web.Api</RootNamespace>
     <AssemblyName>NBCZ.Web.Api</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -63,9 +63,8 @@
       <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.5.0\lib\net451\Microsoft.IdentityModel.Tokens.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SqlSugar, Version=5.1.4.128, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SqlSugar.5.1.4.128\lib\SqlSugar.dll</HintPath>
@@ -268,6 +267,10 @@
     <ProjectReference Include="..\NBCZ.Common\NBCZ.Common.csproj">
       <Project>{f331c30c-341d-4408-908d-8f47ac17e1dc}</Project>
       <Name>NBCZ.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NBCZ.DBUtility\NBCZ.DBUtility.csproj">
+      <Project>{94c6f951-eeb4-4503-b7ee-48104dc59cb2}</Project>
+      <Name>NBCZ.DBUtility</Name>
     </ProjectReference>
     <ProjectReference Include="..\NBCZ.Model\NBCZ.Model.csproj">
       <Project>{e3560d2c-b1ae-41bd-8a18-1de9b9a6a0ba}</Project>

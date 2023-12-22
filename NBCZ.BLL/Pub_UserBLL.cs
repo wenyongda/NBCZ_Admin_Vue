@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NBCZ.BLL
 {
-    public partial class  Pub_UserBLL
+    public partial class Pub_UserBLL
     {
         Pub_UserDAL dal = new Pub_UserDAL();
         Pub_UserRoleBLL userRoleBLL = new Pub_UserRoleBLL();
