@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -98,15 +99,25 @@
     <Compile Include="AppServiceAttribute.cs" />
     <Compile Include="AutoMapperHelper.cs" />
     <Compile Include="ConfigHelper.cs" />
+    <Compile Include="CustomException\CustomException.cs" />
+    <Compile Include="CustomException\ResultCode.cs" />
     <Compile Include="DataCache.cs" />
     <Compile Include="DBHelper.cs" />
     <Compile Include="ExcelHelper.cs" />
+    <Compile Include="Extensions\Extension.Convert.cs" />
+    <Compile Include="Extensions\Extension.Enum.cs" />
+    <Compile Include="Extensions\Extension.Exception.cs" />
+    <Compile Include="Extensions\Extension.Linq.cs" />
+    <Compile Include="Extensions\Extension.Validate.cs" />
+    <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="GlobalConstant.cs" />
     <Compile Include="HttpContextExtension.cs" />
     <Compile Include="LimitedConcurrencyLevelTaskScheduler.cs" />
     <Compile Include="LogHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReflexUtil.cs" />
     <Compile Include="TinyMapperHelper.cs" />
+    <Compile Include="Tools.cs" />
     <Compile Include="TypeUtil.cs" />
     <Compile Include="ValidateCode.cs" />
   </ItemGroup>

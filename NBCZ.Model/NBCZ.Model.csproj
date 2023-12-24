@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,8 +43,8 @@
     <Reference Include="MySqlConnector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92, processorArchitecture=MSIL">
       <HintPath>..\packages\MySqlConnector.2.1.10\lib\net45\MySqlConnector.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SqlSugar, Version=5.1.4.128, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SqlSugar.5.1.4.128\lib\SqlSugar.dll</HintPath>
@@ -84,6 +85,21 @@
     <Compile Include="PageList.cs" />
     <Compile Include="PagerInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProteryConstant.cs" />
+    <Compile Include="System\Dto\LoginBodyDto.cs" />
+    <Compile Include="System\Dto\RegisterDto.cs" />
+    <Compile Include="System\Dto\RoleUserDto.cs" />
+    <Compile Include="System\Dto\SysRoleDto.cs" />
+    <Compile Include="System\Dto\SysUserDto.cs" />
+    <Compile Include="System\SysBase.cs" />
+    <Compile Include="System\SysDept.cs" />
+    <Compile Include="System\SysLogininfor.cs" />
+    <Compile Include="System\SysMenu.cs" />
+    <Compile Include="System\SysRole.cs" />
+    <Compile Include="System\SysRoleMenu.cs" />
+    <Compile Include="System\SysUser.cs" />
+    <Compile Include="System\SysUserRole.cs" />
+    <Compile Include="System\UserConstants.cs" />
     <Compile Include="T4.DapperExt\Pub_Department.cs">
       <DependentUpon>Entity.tt</DependentUpon>
     </Compile>
@@ -120,6 +136,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

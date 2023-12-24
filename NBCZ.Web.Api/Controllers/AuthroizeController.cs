@@ -19,11 +19,9 @@ namespace NBCZ.Web.Api.Controllers
     public class AuthroizeController : ApiController
     {
         private readonly ISqlSugarClient db;
-        private readonly IPubUserService _pubUserService;
-        public AuthroizeController(ISqlSugarClient db, IPubUserService pubUserService)
+        public AuthroizeController(ISqlSugarClient db)
         {
             this.db = db;
-            _pubUserService = pubUserService;
         }
 
 
@@ -99,7 +97,6 @@ namespace NBCZ.Web.Api.Controllers
             var user = User.GetNBCZUser();
             var userId = user.Id;
             var name = user.UserName;
-            var selectUserById = _pubUserService.SelectUserById(userId);
             return Ok(new ResponseObj<dynamic>()
             {
                 Code = 200,
