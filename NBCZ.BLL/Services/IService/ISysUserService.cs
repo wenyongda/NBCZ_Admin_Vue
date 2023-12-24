@@ -5,7 +5,7 @@ using ZR.Model;
 
 namespace NBCZ.BLL.Services.IService
 {
-    public interface ISysUserService
+    public interface ISysUserService : IBaseService<SysUser>
     {
         public PagedInfo<SysUser> SelectUserList(SysUserQueryDto user, PagerInfo pager);
 

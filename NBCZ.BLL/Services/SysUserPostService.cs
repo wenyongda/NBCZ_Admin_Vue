@@ -20,7 +20,7 @@ namespace NBCZ.BLL.Services
         public void InsertUserPost(SysUser user)
         {
             // 新增用户与岗位管理
-            List<SysUserPost> list = new();
+            List<SysUserPost> list = new List<SysUserPost>();
             foreach (var item in user.PostIds)
             {
                 list.Add(new SysUserPost() { PostId = item, UserId = user.UserId });
@@ -47,7 +47,7 @@ namespace NBCZ.BLL.Services
         public string GetPostsStrByUserId(long userId)
         {
             var list = SelectPostsByUserId(userId);
-            return string.Join(',', list.Select(x => x.PostName));
+            return string.Join(",", list.Select(x => x.PostName));
         }
 
         public bool Delete(long userId)

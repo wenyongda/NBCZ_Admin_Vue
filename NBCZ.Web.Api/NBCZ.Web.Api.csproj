@@ -51,6 +51,12 @@
     <Reference Include="Autofac.Integration.WebApi, Version=4.3.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.WebApi2.4.3.1\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
     </Reference>
+    <Reference Include="Mapster, Version=7.2.0.0, Culture=neutral, PublicKeyToken=2f39883af23c29a8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mapster.7.2.0\lib\net45\Mapster.dll</HintPath>
+    </Reference>
+    <Reference Include="Mapster.Core, Version=1.2.0.0, Culture=neutral, PublicKeyToken=e64997d676a9c1d3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mapster.Core.1.2.0\lib\net45\Mapster.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.5.5.0\lib\net451\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
@@ -67,11 +73,11 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="SqlSugar, Version=5.1.4.128, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SqlSugar.5.1.4.128\lib\SqlSugar.dll</HintPath>
+    <Reference Include="SqlSugar, Version=5.1.4.129, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SqlSugar.5.1.4.129\lib\SqlSugar.dll</HintPath>
     </Reference>
     <Reference Include="SqlSugar.MySqlConnector, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SqlSugar.MySqlConnector.5.0.9.1\lib\SqlSugar.MySqlConnector.dll</HintPath>
+      <HintPath>..\packages\SqlSugar.MySqlConnector.5.1.3.42\lib\SqlSugar.MySqlConnector.dll</HintPath>
     </Reference>
     <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
       <HintPath>..\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
@@ -188,6 +194,16 @@
     <Compile Include="Controllers\PubFunctionController.cs" />
     <Compile Include="Controllers\PubRoleController.cs" />
     <Compile Include="Controllers\PubUserController.cs" />
+    <Compile Include="Controllers\System\SysDeptController.cs" />
+    <Compile Include="Controllers\System\SysDictDataController.cs" />
+    <Compile Include="Controllers\System\SysDictTypeController.cs" />
+    <Compile Include="Controllers\System\SysFileController.cs" />
+    <Compile Include="Controllers\System\SysLoginController.cs" />
+    <Compile Include="Controllers\System\SysMenuController.cs" />
+    <Compile Include="Controllers\System\SysPostController.cs" />
+    <Compile Include="Controllers\System\SysRoleController.cs" />
+    <Compile Include="Controllers\System\SysUserController.cs" />
+    <Compile Include="Controllers\System\SysUserRoleController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -197,6 +213,7 @@
     <Compile Include="jwt\HttpAuthenticationChallengeContextExtensions.cs" />
     <Compile Include="jwt\JwtAuthenticationAttribute.cs" />
     <Compile Include="jwt\JwtManager.cs" />
+    <Compile Include="jwt\JwtUtil.cs" />
     <Compile Include="jwt\LoginViewModel.cs" />
     <Compile Include="Models\Request\EditPasswordReq.cs" />
     <Compile Include="Models\Request\PageDataReq.cs" />

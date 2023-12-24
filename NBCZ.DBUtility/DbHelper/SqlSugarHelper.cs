@@ -19,7 +19,11 @@ namespace NBCZ.DBUtility.DbHelper
             DbType = DbType.MySqlConnector,
             ConnectionString = connStr,
             IsAutoCloseConnection = true,
-            InitKeyType = InitKeyType.Attribute
+            InitKeyType = InitKeyType.Attribute,
+            ConfigureExternalServices = new ConfigureExternalServices()
+            {
+                DataInfoCacheService = new SqlSugarCache()
+            }
         },
             db => {
                 db.Aop.OnLogExecuting = (sql, pars) =>

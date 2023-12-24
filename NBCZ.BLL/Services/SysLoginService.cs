@@ -18,12 +18,14 @@ namespace NBCZ.BLL.Services.IService
     public class SysLoginService : BaseService<SysLogininfor>, ISysLoginService
     {
         private readonly ISysUserService SysUserService;
-        private readonly IHttpContextAccessor httpContextAccessor;
+        // private readonly IHttpContextAccessor httpContextAccessor;
 
-        public SysLoginService(ISysUserService sysUserService, IHttpContextAccessor httpContextAccessor)
+        public SysLoginService(ISysUserService sysUserService
+            // , IHttpContextAccessor httpContextAccessor
+            )
         {
             SysUserService = sysUserService;
-            this.httpContextAccessor = httpContextAccessor;
+            // this.httpContextAccessor = httpContextAccessor;
         }
 
         /// <summary>
@@ -40,9 +42,9 @@ namespace NBCZ.BLL.Services.IService
             logininfor.LoginTime = DateTime.Now;
             logininfor.Ipaddr = loginBody.LoginIP;
 
-            ClientInfo clientInfo = httpContextAccessor.HttpContext.GetClientInfo();
-            logininfor.Browser = clientInfo.ToString();
-            logininfor.Os = clientInfo.OS.ToString();
+            // ClientInfo clientInfo = httpContextAccessor.HttpContext.GetClientInfo();
+            // logininfor.Browser = clientInfo.ToString();
+            // logininfor.Os = clientInfo.OS.ToString();
 
             if (user == null || user.UserId <= 0)
             {

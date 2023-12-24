@@ -14,7 +14,7 @@ namespace NBCZ.Web.Api.Controllers
     /// <summary>
     /// 认证
     /// </summary>
-    // [Route("api/Authroize")]
+    [RoutePrefix("api/Authroize")]
     [JwtAuthentication]
     public class AuthroizeController : ApiController
     {
