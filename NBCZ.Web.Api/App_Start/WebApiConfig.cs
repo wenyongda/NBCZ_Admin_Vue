@@ -17,7 +17,7 @@ namespace NBCZ.Web.Api
 			//http://localhost:51534/swagger/ui/index
 			if (ConfigurationManager.AppSettings["isShowDoc"] == "1") { SwaggerConfig.Register(); }
             // Web API configuration and services
-            config.Filters.Add(new AuthorizeAttribute());
+            // config.Filters.Add(new AuthorizeAttribute());
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -35,6 +35,7 @@ namespace NBCZ.Web.Api
             {
                 DateTimeFormat = "yyyy-MM-dd HH:mm:ss"
             });
+            config.Formatters.JsonFormatter.SerializerSettings.Formatting = Formatting.Indented;
 
             ////返回是null改成""
             //config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new NullToEmptyStringResolver();

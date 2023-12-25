@@ -1,13 +1,8 @@
 ﻿using System.Linq;
-using System.Reflection;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Autofac.Integration.WebApi;
-using NBCZ.BLL.T4.DapperExt;
-using NBCZ.Common;
-using NBCZ.Web.Api.Controllers;
 using SqlSugar;
 
 namespace NBCZ.Web.Api
@@ -24,6 +19,11 @@ namespace NBCZ.Web.Api
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             ContainerBuilerCommon.AddAppService();
+            GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
+            // var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
+            // json.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
+            // json.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            // json.SerializerSettings.DateFormatString = BaseController.TIME_FORMAT_FULL;
         }
 
         protected void Application_BeginRequest()

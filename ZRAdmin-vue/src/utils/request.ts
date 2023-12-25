@@ -6,6 +6,15 @@ import useUserStore from '@/store/modules/user'
 import { blobValidate } from '@/utils/ruoyi'
 import { saveAs } from 'file-saver'
 
+declare module 'axios' {
+  interface AxiosResponse<T = any> {
+    code: number
+    data: T
+    msg: string
+  }
+  export function create(config?: AxiosRequestConfig): AxiosInstance
+}
+
 let downloadLoadingInstance
 // 解决后端跨域获取不到cookie问题
 // axios.defaults.withCredentials = true
@@ -24,9 +33,8 @@ service.interceptors.request.use(
     // 是否需要设置 token
     if (getToken()) {
       //将token放到请求头发送给服务器,将tokenkey放在请求头中
-      config.headers['Authorization'] = 'Bearer ' + getToken()
-      config.headers['userid'] = useUserStore().userId
-      config.headers['userName'] = useUserStore().userName
+      config.headers!['Authorization'] = 'Bearer ' + getToken()
+      config.headers!['userid'] = useUserStore().userId
     }
     return config
   },
@@ -45,6 +53,8 @@ service.interceptors.response.use(
     }
     // 未设置状态码则默认成功状态
     const { code, msg } = res.data
+    console.log(res.data)
+
     // 二进制数据则直接返回
     if (res.request.responseType === 'blob' || res.request.responseType === 'arraybuffer') {
       return res
@@ -53,30 +63,32 @@ service.interceptors.response.use(
     if (token) {
       useUserStore().refreshToken(token)
     }
-    if (code === 401) {
+    if (res.status === 401) {
       if (useUserStore().lateFlag === 0) {
         useUserStore().lateFlag++
-        ElMessageBox.confirm('登录状态已过期，请重新登录', '系统提示', {
-          confirmButtonText: '重新登录',
-          cancelButtonText: '取消',
-          type: 'warning'
-        })
+        ElMessage.error('登录状态已过期，请重新登录')
+        // ElMessageBox.confirm('登录状态已过期，请重新登录', '系统提示', {
+        //   confirmButtonText: '重新登录',
+        //   cancelButtonText: '取消',
+        //   type: 'warning'
+        // })
+        //   .then(() => {
+        useUserStore()
+          .logOut()
           .then(() => {
             useUserStore().lateFlag = 0
-            useUserStore()
-              .logOut()
-              .then(() => {
-                location.href = import.meta.env.VITE_APP_ROUTER_PREFIX + 'index'
-              })
+            location.href = import.meta.env.VITE_APP_ROUTER_PREFIX + 'index'
           })
-          .catch(() => {
-            useUserStore().lateFlag = 0
-          })
+        // })
+        // .catch(() => {
+        //   useUserStore().lateFlag = 0
+        // })
       }
       return Promise.reject('无效的会话，或者会话已过期，请重新登录。')
     } else if (code == 0 || code == 1 || code == 110 || code == 101 || code == 403 || code == 500 || code == 429) {
       ElMessage({
-        message: msg,
+        dangerouslyUseHTMLString: true,
+        message: msg.replace(/\\n/g, '<br />'),
         type: 'error'
       })
       return Promise.reject(res.data)
@@ -86,7 +98,7 @@ service.interceptors.response.use(
     }
   },
   (error) => {
-    console.log('axios err', error)
+    console.log('err' + error)
     let { message } = error
     if (message == 'Network Error') {
       message = '后端接口连接异常'
@@ -95,7 +107,7 @@ service.interceptors.response.use(
     } else if (message.includes('Request failed with status code 429')) {
       message = '请求过于频繁，请稍后再试'
     } else if (message.includes('Request failed with status code')) {
-      message = '系统接口' + message.substr(message.length - 3) + '异常，请联系管理员'
+      message = '系统接口' + message.substr(message.length - 3) + '异常'
     }
     ElMessage({
       message: message,
@@ -185,7 +197,7 @@ export async function downFile(url, params, config) {
         var patt = new RegExp('filename=([^;]+\\.[^\\.;]+);*')
         var contentDisposition = decodeURI(resp.headers['content-disposition'])
         var result = patt.exec(contentDisposition)
-        var fileName = result[1]
+        var fileName = result![1]
         fileName = fileName.replace(/\"/g, '')
 
         const blob = new Blob([data])
@@ -202,6 +214,7 @@ export async function downFile(url, params, config) {
       }
       downloadLoadingInstance.close()
     })
+    // @ts-ignore
     .catch((err) => {
       ElMessage({
         message: '下载文件出现错误，请联系管理员！',

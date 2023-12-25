@@ -31,8 +31,8 @@ const useUserStore = defineStore('user', {
         login(username, password, code, uuid)
           .then((res) => {
             if (res.code == 200) {
-              setToken(res.data.token)
-              this.token = res.data.token
+              setToken(res.data)
+              this.token = res.data
               resolve() //then处理
             } else {
               console.log('login error ', res)
