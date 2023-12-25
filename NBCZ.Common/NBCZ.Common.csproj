@@ -159,6 +159,7 @@
     <Compile Include="LogHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReflexUtil.cs" />
+    <Compile Include="SysNoticeLogStatus.cs" />
     <Compile Include="TinyMapperHelper.cs" />
     <Compile Include="Tools.cs" />
     <Compile Include="TypeUtil.cs" />
