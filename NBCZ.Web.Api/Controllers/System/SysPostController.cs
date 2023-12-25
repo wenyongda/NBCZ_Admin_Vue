@@ -4,6 +4,7 @@ using NBCZ.BLL.Services.IService;
 using NBCZ.Common.CustomException;
 using NBCZ.Common.Extensions;
 using NBCZ.Model.System;
+using NBCZ.Web.Api.jwt;
 using SqlSugar;
 using ZR.Common;
 using ZR.Model;
@@ -13,7 +14,7 @@ namespace NBCZ.Web.Api.Controllers.System
     /// <summary>
     /// 岗位管理
     /// </summary>
-    // [Verify]
+    [Verify]
     [RoutePrefix("system/post")]
     public class SysPostController : BaseController
     {

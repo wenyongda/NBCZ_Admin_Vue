@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Web;
 using System.Web.Http;
 using NBCZ.BLL.Services.IService;
 using NBCZ.Common.CustomException;
 using NBCZ.Model;
 using NBCZ.Model.System;
 using NBCZ.Model.System.Dto;
+using NBCZ.Web.Api.jwt;
 using ZR.Model;
 
 namespace NBCZ.Web.Api.Controllers.System
@@ -14,8 +14,7 @@ namespace NBCZ.Web.Api.Controllers.System
     /// <summary>
     /// 用户管理
     /// </summary>
-    // [Verify]
-    [JwtAuthentication]
+    [Verify]
     [RoutePrefix("system/user")]
     public class SysUserController : BaseController
     {
@@ -43,7 +42,7 @@ namespace NBCZ.Web.Api.Controllers.System
         /// <returns></returns>
         // [ActionPermissionFilter(Permission = "system:user:list")]
         [HttpGet, Route("list")]
-        public IHttpActionResult List([FromUri] SysUserQueryDto user, PagerInfo pager)
+        public IHttpActionResult List([FromUri] SysUserQueryDto user,[FromUri] PagerInfo pager)
         {
             var list = _userService.SelectUserList(user, pager);
 

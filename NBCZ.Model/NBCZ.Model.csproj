@@ -99,6 +99,7 @@
     <Compile Include="System\Dto\RegisterDto.cs" />
     <Compile Include="System\Dto\RoleMenuExportDto.cs" />
     <Compile Include="System\Dto\RoleUserDto.cs" />
+    <Compile Include="System\Dto\SysConfigDto.cs" />
     <Compile Include="System\Dto\SysDeptDto.cs" />
     <Compile Include="System\Dto\SysDictDataDto.cs" />
     <Compile Include="System\Dto\SysDictTypeDto.cs" />

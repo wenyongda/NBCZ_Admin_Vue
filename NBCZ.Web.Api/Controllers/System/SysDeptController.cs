@@ -6,6 +6,7 @@ using NBCZ.BLL.Services.IService;
 using NBCZ.Common.CustomException;
 using NBCZ.Model.System;
 using NBCZ.Model.System.Dto;
+using NBCZ.Web.Api.jwt;
 using ZR.Common;
 
 namespace NBCZ.Web.Api.Controllers.System
@@ -13,8 +14,7 @@ namespace NBCZ.Web.Api.Controllers.System
     /// <summary>
     /// 部门
     /// </summary>
-    // [Verify]
-    [JwtAuthentication]
+    [Verify]
     [RoutePrefix("system/dept")]
     public class SysDeptController : BaseController
     {

@@ -194,6 +194,7 @@
     <Compile Include="Controllers\PubFunctionController.cs" />
     <Compile Include="Controllers\PubRoleController.cs" />
     <Compile Include="Controllers\PubUserController.cs" />
+    <Compile Include="Controllers\System\SysConfigController.cs" />
     <Compile Include="Controllers\System\SysDeptController.cs" />
     <Compile Include="Controllers\System\SysDictDataController.cs" />
     <Compile Include="Controllers\System\SysDictTypeController.cs" />
@@ -215,6 +216,7 @@
     <Compile Include="jwt\JwtManager.cs" />
     <Compile Include="jwt\JwtUtil.cs" />
     <Compile Include="jwt\LoginViewModel.cs" />
+    <Compile Include="jwt\VerifyAttribute.cs" />
     <Compile Include="Models\Request\EditPasswordReq.cs" />
     <Compile Include="Models\Request\PageDataReq.cs" />
     <Compile Include="NBCZUser.cs" />

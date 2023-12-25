@@ -2,13 +2,14 @@
 using NBCZ.BLL.Services.IService;
 using NBCZ.Common.CustomException;
 using NBCZ.Model.System.Dto;
+using NBCZ.Web.Api.jwt;
 
 namespace NBCZ.Web.Api.Controllers.System
 {
     /// <summary>
     /// 用户角色管理
     /// </summary>
-    // [Verify]
+    [Verify]
     [RoutePrefix("system/userRole")]
     // [ApiExplorerSettings(GroupName = "sys")]
     public class SysUserRoleController : BaseController

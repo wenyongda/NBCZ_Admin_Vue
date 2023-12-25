@@ -7,14 +7,14 @@ using NBCZ.Common.CustomException;
 using NBCZ.Model;
 using NBCZ.Model.System;
 using NBCZ.Model.System.Dto;
+using NBCZ.Web.Api.jwt;
 
 namespace NBCZ.Web.Api.Controllers.System
 {
     /// <summary>
     /// 系统菜单
     /// </summary>
-    // [Verify]
-    [JwtAuthentication]
+    [Verify]
     [RoutePrefix("system/menu")]
     // [ApiExplorerSettings(GroupName = "sys")]
     public class SysMenuController : BaseController

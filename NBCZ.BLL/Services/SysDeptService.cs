@@ -35,8 +35,8 @@ namespace NBCZ.BLL.Services
         {
             var predicate = Expressionable.Create<SysDept>();
             predicate = predicate.And(it => it.DelFlag == 0);
-            predicate = predicate.AndIF(dept.DeptName.IfNotEmpty(), it => it.DeptName.Contains(dept.DeptName));
-            predicate = predicate.AndIF(dept.Status != null, it => it.Status == dept.Status);
+            predicate = predicate.AndIF(dept != null && dept.DeptName.IfNotEmpty(), it => it.DeptName.Contains(dept.DeptName));
+            predicate = predicate.AndIF(dept != null && dept.Status != null, it => it.Status == dept.Status);
 
             var response = GetList(predicate.ToExpression());
 

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Text;
 using System.Web;
 using System.Web.Http;
@@ -59,10 +60,24 @@ namespace NBCZ.Web.Api.Controllers
         /// <returns></returns>
         protected IHttpActionResult SUCCESS(object data, string timeFormatStr = "yyyy-MM-dd HH:mm:ss")
         {
-            string jsonStr = GetJsonStr(GetApiResult(data != null ? ResultCode.SUCCESS : ResultCode.NO_DATA, data), timeFormatStr);
+            // string jsonStr = GetJsonStr(GetApiResult(data != null ? ResultCode.SUCCESS : ResultCode.NO_DATA, data), timeFormatStr);
+            var jsonStr = GetApiResult(data != null ? ResultCode.SUCCESS : ResultCode.NO_DATA, data);
             return Ok(jsonStr);
         }
 
+        // /// <summary>
+        // /// 返回成功封装
+        // /// </summary>
+        // /// <param name="data"></param>
+        // /// <param name="timeFormatStr"></param>
+        // /// <returns></returns>
+        // protected HttpResponseMessage SUCCESS(object data, bool isJson,string timeFormatStr = "yyyy-MM-dd HH:mm:ss")
+        // {
+        //     string jsonStr = GetJsonStr(GetApiResult(data != null ? ResultCode.SUCCESS : ResultCode.NO_DATA, data), timeFormatStr);
+        //     // return Content(HttpStatusCode.OK, jsonStr, new JsonMediaTypeFormatter(), "application/json");
+        //     return new HttpResponseMessage { Content = new StringContent(jsonStr, Encoding.UTF8, "application/json") };
+        // }
+        
         /// <summary>
         /// json输出带时间格式的
         /// </summary>
@@ -70,15 +85,15 @@ namespace NBCZ.Web.Api.Controllers
         /// <returns></returns>
         protected IHttpActionResult ToResponse(ApiResult apiResult)
         {
-            string jsonStr = GetJsonStr(apiResult, TIME_FORMAT_FULL);
-
+            // string jsonStr = GetJsonStr(apiResult, TIME_FORMAT_FULL);
+            var jsonStr = apiResult;
             return Ok(jsonStr);
         }
 
         protected IHttpActionResult ToResponse(long rows, string timeFormatStr = "yyyy-MM-dd HH:mm:ss")
         {
-            string jsonStr = GetJsonStr(ToJson(rows), timeFormatStr);
-
+            // string jsonStr = GetJsonStr(ToJson(rows), timeFormatStr);
+            var jsonStr = ToJson(rows);
             return Ok(jsonStr);
         }
 
@@ -87,27 +102,27 @@ namespace NBCZ.Web.Api.Controllers
             return ToResponse(new ApiResult((int)resultCode, msg));
         }
         
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="apiResult"></param>
-        /// <param name="timeFormatStr"></param>
-        /// <returns></returns>
-        private static string GetJsonStr(ApiResult apiResult, string timeFormatStr)
-        {
-            if (string.IsNullOrEmpty(timeFormatStr))
-            {
-                timeFormatStr = TIME_FORMAT_FULL;
-            }
-            var serializerSettings = new JsonSerializerSettings
-            {
-                // 设置为驼峰命名
-                ContractResolver = new CamelCasePropertyNamesContractResolver(),
-                DateFormatString = timeFormatStr
-            };
-
-            return JsonConvert.SerializeObject(apiResult, Formatting.Indented, serializerSettings);
-        }
+        // /// <summary>
+        // /// 
+        // /// </summary>
+        // /// <param name="apiResult"></param>
+        // /// <param name="timeFormatStr"></param>
+        // /// <returns></returns>
+        // private static string GetJsonStr(ApiResult apiResult, string timeFormatStr)
+        // {
+        //     if (string.IsNullOrEmpty(timeFormatStr))
+        //     {
+        //         timeFormatStr = TIME_FORMAT_FULL;
+        //     }
+        //     var serializerSettings = new JsonSerializerSettings
+        //     {
+        //         // 设置为驼峰命名
+        //         ContractResolver = new CamelCasePropertyNamesContractResolver(),
+        //         DateFormatString = timeFormatStr
+        //     };
+        //
+        //     return JsonConvert.SerializeObject(apiResult, Formatting.Indented, serializerSettings);
+        // }
         
         /// <summary>
         /// 响应返回结果

@@ -107,8 +107,7 @@ namespace NBCZ.Web.Api.jwt
             token = token.Replace("Bearer ", "");
             try
             {
-                tokenHandler.ValidateToken(token, validateParameter, out SecurityToken validatedToken);
-
+                HttpContext.Current.User = tokenHandler.ValidateToken(token, validateParameter, out SecurityToken validatedToken);
                 return tokenHandler.ReadJwtToken(token);
             }
             catch (Exception ex)

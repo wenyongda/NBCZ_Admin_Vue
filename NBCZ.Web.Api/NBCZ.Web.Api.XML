@@ -73,14 +73,6 @@
             <param name="apiResult"></param>
             <returns></returns>
         </member>
-        <member name="M:NBCZ.Web.Api.Controllers.BaseController.GetJsonStr(NBCZ.Model.ApiResult,System.String)">
-            <summary>
-            
-            </summary>
-            <param name="apiResult"></param>
-            <param name="timeFormatStr"></param>
-            <returns></returns>
-        </member>
         <member name="M:NBCZ.Web.Api.Controllers.BaseController.ToJson(System.Int64,System.Object)">
             <summary>
             响应返回结果
@@ -278,6 +270,54 @@
         <member name="M:NBCZ.Web.Api.Controllers.PubUserController.EditPassword(NBCZ.Web.Api.Request.EditPasswordReq)">
             <summary>
             修改用户密码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:NBCZ.Web.Api.Controllers.System.SysConfigController">
+            <summary>
+            参数配置Controller
+            </summary>
+        </member>
+        <member name="F:NBCZ.Web.Api.Controllers.System.SysConfigController._sysConfigService">
+            <summary>
+            参数配置接口
+            </summary>
+        </member>
+        <member name="M:NBCZ.Web.Api.Controllers.System.SysConfigController.QuerySysConfig(NBCZ.Model.System.Dto.SysConfigQueryDto)">
+            <summary>
+            查询参数配置列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NBCZ.Web.Api.Controllers.System.SysConfigController.GetSysConfig(System.Int32)">
+            <summary>
+            查询参数配置详情
+            </summary>
+            <param name="ConfigId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NBCZ.Web.Api.Controllers.System.SysConfigController.GetConfigKey(System.String)">
+            <summary>
+            根据参数键名查询参数值
+            </summary>
+            <param name="configKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NBCZ.Web.Api.Controllers.System.SysConfigController.AddSysConfig(NBCZ.Model.System.Dto.SysConfigDto)">
+            <summary>
+            添加参数配置
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NBCZ.Web.Api.Controllers.System.SysConfigController.UpdateSysConfig(NBCZ.Model.System.Dto.SysConfigDto)">
+            <summary>
+            更新参数配置
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NBCZ.Web.Api.Controllers.System.SysConfigController.DeleteSysConfig(System.String)">
+            <summary>
+            删除参数配置
             </summary>
             <returns></returns>
         </member>
@@ -1199,6 +1239,12 @@
              </summary>
              <param name="user"></param>
              <returns></returns>
+        </member>
+        <member name="T:NBCZ.Web.Api.jwt.VerifyAttribute">
+            <summary>
+            授权校验访问
+            如果跳过授权登录在Action 或controller加上 AllowAnonymousAttribute
+            </summary>
         </member>
         <member name="P:NBCZ.Web.Api.LoginViewModel.Name">
             <summary>

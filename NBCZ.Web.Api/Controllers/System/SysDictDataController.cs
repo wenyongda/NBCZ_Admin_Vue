@@ -6,6 +6,7 @@ using System.Web.Http;
 using NBCZ.BLL.Services.IService;
 using NBCZ.Model.System;
 using NBCZ.Model.System.Dto;
+using NBCZ.Web.Api.jwt;
 using ZR.Model;
 
 namespace NBCZ.Web.Api.Controllers.System
@@ -13,7 +14,7 @@ namespace NBCZ.Web.Api.Controllers.System
     /// <summary>
     /// 数据字典信息
     /// </summary>
-    // [Verify]
+    [Verify]
     [RoutePrefix("system/dict/data")]
     public class SysDictDataController : BaseController
     {

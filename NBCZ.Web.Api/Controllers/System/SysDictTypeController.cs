@@ -6,6 +6,7 @@ using NBCZ.BLL.Services.IService;
 using NBCZ.Model;
 using NBCZ.Model.System;
 using NBCZ.Model.System.Dto;
+using NBCZ.Web.Api.jwt;
 using ZR.Common;
 using ZR.Model;
 
@@ -14,7 +15,7 @@ namespace NBCZ.Web.Api.Controllers.System
     /// <summary>
     /// 数据字典信息
     /// </summary>
-    // [Verify]
+    [Verify]
     [RoutePrefix("system/dict/type")]
     // [ApiExplorerSettings(GroupName = "sys")]
     public class SysDictTypeController : BaseController

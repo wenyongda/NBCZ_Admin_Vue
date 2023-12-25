@@ -6,6 +6,7 @@ using NBCZ.Common.CustomException;
 using NBCZ.Model;
 using NBCZ.Model.System;
 using NBCZ.Model.System.Dto;
+using NBCZ.Web.Api.jwt;
 using SqlSugar;
 using ZR.Common;
 
@@ -14,7 +15,7 @@ namespace NBCZ.Web.Api.Controllers.System
     /// <summary>
     /// 文件存储Controller
     /// </summary>
-    // [Verify]
+    [Verify]
     [RoutePrefix("tool/file")]
     public class SysFileController : BaseController
     {

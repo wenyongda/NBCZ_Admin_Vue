@@ -41,6 +41,8 @@ namespace NBCZ.Web.Api
 
             else
                 context.Principal = principal;
+            
+            
         }
 
 
