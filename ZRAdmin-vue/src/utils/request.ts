@@ -63,7 +63,7 @@ service.interceptors.response.use(
     if (token) {
       useUserStore().refreshToken(token)
     }
-    if (res.status === 401) {
+    if (code === 401) {
       if (useUserStore().lateFlag === 0) {
         useUserStore().lateFlag++
         ElMessage.error('登录状态已过期，请重新登录')

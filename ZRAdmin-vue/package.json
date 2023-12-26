@@ -16,8 +16,8 @@
     "url": "https://gitee.com/izory/ZrAdminNetCore"
   },
   "dependencies": {
+    "@aspnet/signalr": "^1.0.27",
     "@element-plus/icons-vue": "^0.2.7",
-    "@microsoft/signalr": "^6.0.5",
     "@vueuse/core": "^8.9.4",
     "@wangeditor/editor": "^5.1.1",
     "@wangeditor/editor-for-vue": "^5.1.11",

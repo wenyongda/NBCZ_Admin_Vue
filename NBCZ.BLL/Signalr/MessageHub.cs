@@ -54,7 +54,7 @@ namespace NBCZ.BLL.Signalr
         /// <returns></returns>
         public override async Task OnConnected()
         {
-            var context = App.HttpContext;
+            var context = Context.Request.GetHttpContext().ApplicationInstance.Context;
             var name = HttpContextExtension.GetName(context);
             // var ip = HttpContextExtension.GetClientUserIp(context);
             // var ip_info = IpTool.Search(ip);
@@ -74,9 +74,9 @@ namespace NBCZ.BLL.Signalr
             //判断用户是否存在，否则添加集合!user2 && !user && 
             if (!user2 && !user && Context.User.Identity.IsAuthenticated)
             {
-                OnlineUsers onlineUser = new OnlineUsers(Context.ConnectionId, name, userid, ip, device)
+                OnlineUsers onlineUser = new OnlineUsers(Context.ConnectionId, name, userid)
                 {
-                    Location = ip_info.City,
+                    // Location = ip_info.City,
                     Uuid = uuid,
                     Platform = from,
                     ClientId = clientId ?? Context.ConnectionId
@@ -157,7 +157,7 @@ namespace NBCZ.BLL.Signalr
 
             // Clients.Clients(connIds.Select(f => f.ConnnectionId)).SendAsync("onlineInfo", userInfo);
 
-            Log.WriteLine(ConsoleColor.Blue, msg: $"用户{name}已连接，今日已在线{userInfo?.TodayOnlineTime}分钟，当前已连接{OnlineClients.Count}个");
+            // Log.WriteLine(ConsoleColor.Blue, msg: $"用户{name}已连接，今日已在线{userInfo?.TodayOnlineTime}分钟，当前已连接{OnlineClients.Count}个");
             //给所有用户更新在线人数
             await Clients.All.SendAsync(HubsConstant.OnlineNum, new
             {
@@ -207,8 +207,9 @@ namespace NBCZ.BLL.Signalr
         [HubMethodName("sendMessage")]
         public async Task SendMessage(string toConnectId, long toUserId, string message)
         {
-            var userName = HttpContextExtension.GetName(App.HttpContext);
-            long userid = HttpContextExtension.GetUId(App.HttpContext);
+            var context = Context.Request.GetHttpContext().ApplicationInstance.Context;
+            var userName = HttpContextExtension.GetName(context);
+            long userid = HttpContextExtension.GetUId(context);
             var toUserList = OnlineClients.Where(p => p.Userid == toUserId);
             var toUserInfo = toUserList.FirstOrDefault();
             IList<string> sendToUser = toUserList.Select(x => x.ConnnectionId).ToList();
@@ -331,7 +332,8 @@ namespace NBCZ.BLL.Signalr
         [HubMethodName("AllReadNotice")]
         public async Task AllReadNotice()
         {
-            var userId = HttpContextExtension.GetUId(App.HttpContext);
+            var context = Context.Request.GetHttpContext().ApplicationInstance.Context;
+            var userId = HttpContextExtension.GetUId(context);
             var unreadNotificationIds = await _sysNoticeLogService.Queryable()
                 .Where(it => it.Status == SysNoticeLogStatus.Unread && it.UserId == userId)
                 .Select(it => it.NoticeId)
@@ -377,7 +379,8 @@ namespace NBCZ.BLL.Signalr
         [HubMethodName("ReadNotice")]
         public async Task ReadNotice(string noticeId)
         {
-            var userid = HttpContextExtension.GetUId(App.HttpContext);
+            var context = Context.Request.GetHttpContext().ApplicationInstance.Context;
+            var userid = HttpContextExtension.GetUId(context);
             await _sysNoticeLogService.Updateable(new SysNoticeLog
                 {
                     Status = SysNoticeLogStatus.Read
@@ -428,21 +431,21 @@ namespace NBCZ.BLL.Signalr
             return Context.ConnectionId;
         }
 
-        /// <summary>
-        /// 退出其他设备登录
-        /// </summary>
-        /// <returns></returns>
-        [HubMethodName("logOut")]
-        public async Task LogOut()
-        {
-            var singleLogin = AppSettings.Get<bool>("singleLogin");
-            long userid = HttpContextExtension.GetUId(App.HttpContext);
-            if (singleLogin)
-            {
-                var onlineUsers = OnlineClients.Where(p => p.ConnnectionId != Context.ConnectionId && p.Userid == userid);
-                await Clients.Clients(onlineUsers.Select(x => x.ConnnectionId).ToList())
-                    .SendAsync("logOut");
-            }
-        }
+        // /// <summary>
+        // /// 退出其他设备登录
+        // /// </summary>
+        // /// <returns></returns>
+        // [HubMethodName("logOut")]
+        // public async Task LogOut()
+        // {
+        //     var singleLogin = AppSettings.Get<bool>("singleLogin");
+        //     long userid = HttpContextExtension.GetUId(App.HttpContext);
+        //     if (singleLogin)
+        //     {
+        //         var onlineUsers = OnlineClients.Where(p => p.ConnnectionId != Context.ConnectionId && p.Userid == userid);
+        //         await Clients.Clients(onlineUsers.Select(x => x.ConnnectionId).ToList())
+        //             .SendAsync("logOut");
+        //     }
+        // }
     }
 }

@@ -70,5 +70,12 @@ namespace NBCZ.BLL.Signalr
             UserIP = userip;
             Browser = browser;
         }
+
+        public OnlineUsers(string connnectionId, string name, long userid)
+        {
+            ConnnectionId = connnectionId;
+            Userid = userid;
+            Name = name;
+        }
     }
 }
