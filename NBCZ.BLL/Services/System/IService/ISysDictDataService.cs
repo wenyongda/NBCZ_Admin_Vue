@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using NBCZ.Model.System;
 using ZR.Model;
-using ZR.ServiceCore.Model;
 
-namespace NBCZ.BLL.Services.IService
+namespace NBCZ.BLL.Services.System.IService
 {
     public interface ISysDictDataService : IBaseService<SysDictData>
     {

@@ -14,7 +14,7 @@ export default {
   /**
    * 框架主题颜色值
    */
-  theme: '#FF8C00',
+  theme: '#D59DFF',
   /**
    * 是否系统布局配置
    */

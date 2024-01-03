@@ -29,7 +29,7 @@ namespace NBCZ.Web.Api.Controllers
               
                 var data = controllerContext.Request.Content.ReadAsStringAsync().Result;
                 var token = controllerContext.Request.Headers.Authorization;
-                LogHelper.WrtieRequestLog(LogLevel.Info, HttpContext.Current.Request.Url.AbsoluteUri +
+                LogHelper.WriteRequestLog(LogLevel.Info, HttpContext.Current.Request.Url.AbsoluteUri +
                     "\r\ntoken:" + token + " \r\n data:" + data);
 
             }

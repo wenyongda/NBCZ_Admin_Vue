@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using NBCZ.Model.System;
 
-namespace NBCZ.BLL.Services.IService
+namespace NBCZ.BLL.Services.System.IService
 {
     public interface ISysPostService : IBaseService<SysPost>
     {

@@ -15,3 +15,12 @@
 /.vs/NBCZ
 /.vs/NBCZ/v15/Server/sqlite3/db.lock
 .idea/
+NBCZ.sln.DotSettings.user
+NBCZ.BLL/.vs/NBCZ.BLL.csproj.dtbcache.json
+NBCZ.Common/.vs/NBCZ.Common.csproj.dtbcache.json
+NBCZ.DAL/NBCZ.DAL.csproj.user
+NBCZ.DAL/.vs/NBCZ.DAL.csproj.dtbcache.json
+NBCZ.Model/.vs/NBCZ.Model.csproj.dtbcache.json
+NBCZ.Web.Api/.vs/NBCZ.Web.Api.csproj.dtbcache.json
+NBCZ.Web.Api/adminlogs/sql.txt
+NBCZ.Web.Api/logs/all.txt

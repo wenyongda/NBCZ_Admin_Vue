@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Web;
 using System.Web.Http;
 using Mapster;
-using NBCZ.BLL.Services.IService;
+using NBCZ.BLL.Services.System.IService;
 using NBCZ.Model;
 using NBCZ.Model.System;
 using NBCZ.Model.System.Dto;
@@ -37,6 +36,7 @@ namespace NBCZ.Web.Api.Controllers.System
         [HttpGet, Route("list")]
         public IHttpActionResult List([FromUri] SysDictType dict, [FromUri] PagerInfo pagerInfo)
         {
+            if (pagerInfo == null) pagerInfo = new PagerInfo();
             var list = _sysDictService.SelectDictTypeList(dict, pagerInfo);
 
             return SUCCESS(list, TIME_FORMAT_FULL);

@@ -1,5 +1,6 @@
 ﻿using System;
 using Infrastructure.Extensions;
+using NBCZ.BLL.Services.System.IService;
 using NBCZ.Common;
 using NBCZ.Common.CustomException;
 using NBCZ.Common.Extensions;
@@ -9,7 +10,7 @@ using NBCZ.Model.System.Dto;
 using SqlSugar;
 using ZR.Model;
 
-namespace NBCZ.BLL.Services.IService
+namespace NBCZ.BLL.Services.System
 {
     /// <summary>
     /// 登录

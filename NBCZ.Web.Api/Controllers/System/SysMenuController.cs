@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Http;
 using Mapster;
-using NBCZ.BLL.Services.IService;
+using NBCZ.BLL.Services.System.IService;
 using NBCZ.Common;
 using NBCZ.Common.CustomException;
 using NBCZ.Model;

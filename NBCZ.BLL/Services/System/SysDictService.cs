@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using NBCZ.BLL.Services.IService;
+using NBCZ.BLL.Services.System.IService;
 using NBCZ.Common;
 using NBCZ.Common.CustomException;
 using NBCZ.Model.System;
 using SqlSugar;
 using ZR.Model;
 
-namespace NBCZ.BLL.Services
+namespace NBCZ.BLL.Services.System
 {
     /// <summary>
     /// 字典类型
@@ -36,10 +36,13 @@ namespace NBCZ.BLL.Services
         public PagedInfo<SysDictType> SelectDictTypeList(SysDictType dictType, PagerInfo pager)
         {
             var exp = Expressionable.Create<SysDictType>();
-            exp.AndIF(!string.IsNullOrEmpty(dictType.DictName), it => it.DictName.Contains(dictType.DictName));
-            exp.AndIF(!string.IsNullOrEmpty(dictType.Status), it => it.Status == dictType.Status);
-            exp.AndIF(!string.IsNullOrEmpty(dictType.DictType), it => it.DictType.Contains(dictType.DictType));
-            exp.AndIF(!string.IsNullOrEmpty(dictType.Type), it => it.Type.Equals(dictType.Type));
+            if (dictType != null)
+            {
+                exp.AndIF(!string.IsNullOrEmpty(dictType.DictName), it => it.DictName.Contains(dictType.DictName));
+                exp.AndIF(!string.IsNullOrEmpty(dictType.Status), it => it.Status == dictType.Status);
+                exp.AndIF(!string.IsNullOrEmpty(dictType.DictType), it => it.DictType.Contains(dictType.DictType));
+                exp.AndIF(!string.IsNullOrEmpty(dictType.Type), it => it.Type.Equals(dictType.Type));
+            }
 
             return GetPages(exp.ToExpression(), pager, f => f.DictId, OrderByType.Desc);
         }

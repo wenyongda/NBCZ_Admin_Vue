@@ -2,9 +2,8 @@ using System.Collections.Generic;
 using NBCZ.Model.System;
 using NBCZ.Model.System.Dto;
 using ZR.Model;
-using ZR.ServiceCore.Model;
 
-namespace NBCZ.BLL.Services.IService
+namespace NBCZ.BLL.Services.System.IService
 {
     /// <summary>
     /// 通知公告表service接口

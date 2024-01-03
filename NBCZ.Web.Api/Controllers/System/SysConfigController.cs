@@ -2,7 +2,7 @@ using System.Linq;
 using System.Web.Http;
 using Infrastructure.Extensions;
 using Mapster;
-using NBCZ.BLL.Services.IService;
+using NBCZ.BLL.Services.System.IService;
 using NBCZ.Common.CustomException;
 using NBCZ.Model;
 using NBCZ.Model.System;

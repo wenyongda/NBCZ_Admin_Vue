@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Infrastructure.Extensions;
-using NBCZ.BLL.Services.IService;
+using NBCZ.BLL.Services.System.IService;
 using NBCZ.Common;
 using NBCZ.Common.CustomException;
 using NBCZ.DBUtility;
@@ -13,7 +13,7 @@ using SqlSugar;
 using ZR.Common;
 using ZR.Model;
 
-namespace NBCZ.BLL.Services
+namespace NBCZ.BLL.Services.System
 {
     /// <summary>
     /// 系统用户

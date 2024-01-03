@@ -5,12 +5,13 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NLog;
 
 namespace NBCZ.DBUtility.DbHelper
 {
     public static class SqlSugarHelper
     {
-        //private static ILog log = LogManager.GetLogger(typeof(SqlSugarHelper));
+        private static Logger log = LogManager.GetCurrentClassLogger();
 
         private static readonly string connStr = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
 
@@ -32,14 +33,11 @@ namespace NBCZ.DBUtility.DbHelper
                     // Console.WriteLine(string.Join(",", pars?.Select(it => it.ParameterName + ":" + it.Value)));
                     var str = $"Executing SQL: {UtilMethods.GetSqlString(DbType.MySql, sql, pars)}\n";
                     if (sql.StartsWith("UPDATE", StringComparison.OrdinalIgnoreCase) || sql.StartsWith("INSERT", StringComparison.OrdinalIgnoreCase))
-                        //log.Warn(str);
-                        Console.WriteLine(str);
+                        log.Warn(str);
                     else if (sql.StartsWith("DELETE", StringComparison.OrdinalIgnoreCase) || sql.StartsWith("TRUNCATE", StringComparison.OrdinalIgnoreCase))
-                        //log.Error(str);
-                        Console.WriteLine(str);
+                        log.Error(str);
                     else
-                        //log.Info(str);
-                        Console.WriteLine(str);
+                        log.Info(str);
                 };
             });
     }

@@ -35,9 +35,6 @@
     <Reference Include="Autofac, Version=4.9.4.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.4.9.4\lib\net45\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="Mapster, Version=7.2.0.0, Culture=neutral, PublicKeyToken=2f39883af23c29a8, processorArchitecture=MSIL">
       <HintPath>..\packages\Mapster.7.2.0\lib\net45\Mapster.dll</HintPath>
     </Reference>
@@ -66,8 +63,11 @@
     <Reference Include="MySqlConnector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92, processorArchitecture=MSIL">
       <HintPath>..\packages\MySqlConnector.2.3.3\lib\net48\MySqlConnector.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.5.2.8\lib\net46\NLog.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
@@ -85,6 +85,7 @@
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=7.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.7.0.2\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -119,34 +120,36 @@
     <Compile Include="Pub_FunctionBLL.cs" />
     <Compile Include="Pub_RoleBLL.cs" />
     <Compile Include="Pub_UserBLL.cs" />
-    <Compile Include="Services\IService\ISysConfigService.cs" />
-    <Compile Include="Services\IService\ISysDeptService.cs" />
-    <Compile Include="Services\IService\ISysDictDataService.cs" />
-    <Compile Include="Services\IService\ISysDictService.cs" />
-    <Compile Include="Services\IService\ISysFileService.cs" />
-    <Compile Include="Services\IService\ISysLoginService.cs" />
-    <Compile Include="Services\IService\ISysMenuService.cs" />
-    <Compile Include="Services\IService\ISysNoticeLogService.cs" />
-    <Compile Include="Services\IService\ISysNoticeService.cs" />
-    <Compile Include="Services\IService\ISysPermissionService.cs" />
-    <Compile Include="Services\IService\ISysPostService.cs" />
-    <Compile Include="Services\IService\ISysRoleService.cs" />
-    <Compile Include="Services\IService\ISysUserPostService.cs" />
-    <Compile Include="Services\IService\ISysUserRoleService.cs" />
-    <Compile Include="Services\IService\ISysUserService.cs" />
-    <Compile Include="Services\SysConfigService.cs" />
-    <Compile Include="Services\SysDeptService.cs" />
-    <Compile Include="Services\SysDictDataService.cs" />
-    <Compile Include="Services\SysDictService.cs" />
-    <Compile Include="Services\SysLoginService.cs" />
-    <Compile Include="Services\SysMenuService.cs" />
-    <Compile Include="Services\SysPermissionService.cs" />
-    <Compile Include="Services\SysPostService.cs" />
-    <Compile Include="Services\SysRoleMenuService.cs" />
-    <Compile Include="Services\SysRoleService.cs" />
-    <Compile Include="Services\SysUserPostService.cs" />
-    <Compile Include="Services\SysUserRoleService.cs" />
-    <Compile Include="Services\SysUserService.cs" />
+    <Compile Include="Services\System\IService\ISysConfigService.cs" />
+    <Compile Include="Services\System\IService\ISysDeptService.cs" />
+    <Compile Include="Services\System\IService\ISysDictDataService.cs" />
+    <Compile Include="Services\System\IService\ISysDictService.cs" />
+    <Compile Include="Services\System\IService\ISysFileService.cs" />
+    <Compile Include="Services\System\IService\ISysLoginService.cs" />
+    <Compile Include="Services\System\IService\ISysMenuService.cs" />
+    <Compile Include="Services\System\IService\ISysNoticeLogService.cs" />
+    <Compile Include="Services\System\IService\ISysNoticeService.cs" />
+    <Compile Include="Services\System\IService\ISysPermissionService.cs" />
+    <Compile Include="Services\System\IService\ISysPostService.cs" />
+    <Compile Include="Services\System\IService\ISysRoleService.cs" />
+    <Compile Include="Services\System\IService\ISysUserPostService.cs" />
+    <Compile Include="Services\System\IService\ISysUserRoleService.cs" />
+    <Compile Include="Services\System\IService\ISysUserService.cs" />
+    <Compile Include="Services\System\SysConfigService.cs" />
+    <Compile Include="Services\System\SysDeptService.cs" />
+    <Compile Include="Services\System\SysDictDataService.cs" />
+    <Compile Include="Services\System\SysDictService.cs" />
+    <Compile Include="Services\System\SysLoginService.cs" />
+    <Compile Include="Services\System\SysMenuService.cs" />
+    <Compile Include="Services\System\SysNoticeLogService.cs" />
+    <Compile Include="Services\System\SysNoticeService.cs" />
+    <Compile Include="Services\System\SysPermissionService.cs" />
+    <Compile Include="Services\System\SysPostService.cs" />
+    <Compile Include="Services\System\SysRoleMenuService.cs" />
+    <Compile Include="Services\System\SysRoleService.cs" />
+    <Compile Include="Services\System\SysUserPostService.cs" />
+    <Compile Include="Services\System\SysUserRoleService.cs" />
+    <Compile Include="Services\System\SysUserService.cs" />
     <Compile Include="Signalr\HubsConstant.cs" />
     <Compile Include="Signalr\MessageHub.cs" />
     <Compile Include="Signalr\OnlineUsers.cs" />

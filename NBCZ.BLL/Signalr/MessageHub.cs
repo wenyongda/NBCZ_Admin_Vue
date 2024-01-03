@@ -7,7 +7,7 @@ using Infrastructure.Extensions;
 using Mapster;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
-using NBCZ.BLL.Services.IService;
+using NBCZ.BLL.Services.System.IService;
 using NBCZ.Common;
 using NBCZ.Model;
 using NBCZ.Model.System;

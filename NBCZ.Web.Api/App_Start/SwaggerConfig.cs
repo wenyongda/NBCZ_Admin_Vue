@@ -33,7 +33,7 @@ namespace NBCZ.Web.Api
                         // hold additional metadata for an API. Version and title are required but you can also provide
                         // additional fields by chaining methods off SingleApiVersion.
                         //
-                        c.SingleApiVersion("v1", "NBCZ.Web.Api接口文档");
+                        c.SingleApiVersion("v1", "NBCZ.Web.Api鎺ュ彛鏂囨。");
 
                         // If you want the output Swagger docs to be indented properly, enable the "PrettyPrint" option.
                         //
@@ -178,10 +178,10 @@ namespace NBCZ.Web.Api
                         //
                         //c.CustomProvider((defaultProvider) => new CachingSwaggerProvider(defaultProvider));
 
-                        //cts 添加汉化功能
+                        //cts 娣诲姞姹夊寲鍔熻兘
                         c.CustomProvider((defaultProvider) => new SwaggerCacheProvider(defaultProvider, string.Format("{0}/NBCZ.Web.Api.XML", System.AppDomain.CurrentDomain.BaseDirectory)));
 
-                        //cts 添加请求头文本框
+                        //cts 娣诲姞璇锋眰澶存枃鏈
                         c.OperationFilter<HttpAuthHeaderFilter>();
                       
                     })
@@ -190,7 +190,7 @@ namespace NBCZ.Web.Api
                         // Use the "DocumentTitle" option to change the Document title.
                         // Very helpful when you have multiple Swagger pages open, to tell them apart.
                         //
-                        c.DocumentTitle("NBCZ.Web.Api接口文档");
+                        // c.DocumentTitle("NBCZ.Web.Api鎺ュ彛鏂囨。");
                         
                         // Use the "InjectStylesheet" option to enrich the UI with one or more additional CSS stylesheets.
                         // The file must be included in your project as an "Embedded Resource", and then the resource's
@@ -258,7 +258,7 @@ namespace NBCZ.Web.Api
                         //
                         //c.EnableApiKeySupport("apiKey", "header");
 
-                        //cts 添加汉化功能
+                        //cts 娣诲姞姹夊寲鍔熻兘
                         c.InjectJavaScript(System.Reflection.Assembly.GetExecutingAssembly(), "NBCZ.Web.Api.swagger.js");
                     });
         }

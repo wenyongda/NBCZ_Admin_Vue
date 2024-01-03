@@ -1,8 +1,6 @@
 ﻿using System.Collections;
-using System.Web;
 using System.Web.Http;
-using System.Web.Http.Description;
-using NBCZ.BLL.Services.IService;
+using NBCZ.BLL.Services.System.IService;
 using NBCZ.Common.CustomException;
 using NBCZ.Model.System;
 using NBCZ.Model.System.Dto;

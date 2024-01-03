@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Infrastructure.Extensions;
-using NBCZ.BLL.Services.IService;
+using NBCZ.BLL.Services.System.IService;
 using NBCZ.Common;
 using NBCZ.Common.Extensions;
 using NBCZ.Model.System;
@@ -13,7 +13,7 @@ using NBCZ.Model.System.Vo;
 using SqlSugar;
 using ZR.Common;
 
-namespace NBCZ.BLL.Services
+namespace NBCZ.BLL.Services.System
 {
     /// <summary>
     /// 菜单

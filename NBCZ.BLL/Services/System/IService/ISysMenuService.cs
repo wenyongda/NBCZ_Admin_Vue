@@ -4,7 +4,7 @@ using NBCZ.Model.System.Dto;
 using NBCZ.Model.System.Generate;
 using NBCZ.Model.System.Vo;
 
-namespace NBCZ.BLL.Services.IService
+namespace NBCZ.BLL.Services.System.IService
 {
     public interface ISysMenuService : IBaseService<SysMenu>
     {

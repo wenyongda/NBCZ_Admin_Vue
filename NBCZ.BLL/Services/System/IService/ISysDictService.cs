@@ -2,7 +2,7 @@
 using NBCZ.Model.System;
 using ZR.Model;
 
-namespace NBCZ.BLL.Services.IService
+namespace NBCZ.BLL.Services.System.IService
 {
     /// <summary>
     /// 

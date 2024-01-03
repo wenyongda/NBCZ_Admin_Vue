@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using NBCZ.BLL.Services.IService;
+using NBCZ.BLL.Services.System.IService;
 using NBCZ.Common;
 using NBCZ.Model.System;
 using SqlSugar;
 
-namespace NBCZ.BLL.Services
+namespace NBCZ.BLL.Services.System
 {
     /// <summary>
     /// 用户岗位

@@ -1,6 +1,6 @@
 using NBCZ.Model.System;
 
-namespace NBCZ.BLL.Services.IService
+namespace NBCZ.BLL.Services.System.IService
 {
     /// <summary>
     /// 参数配置service接口

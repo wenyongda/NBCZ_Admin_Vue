@@ -1,5 +1,5 @@
 ﻿using System.Web.Http;
-using NBCZ.BLL.Services.IService;
+using NBCZ.BLL.Services.System.IService;
 using NBCZ.Common.CustomException;
 using NBCZ.Model.System.Dto;
 using NBCZ.Web.Api.jwt;

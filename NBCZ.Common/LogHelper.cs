@@ -1,67 +1,64 @@
-﻿using log4net;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
+using NLog;
 
 namespace NBCZ.Common
 {
      public class LogHelper
     {
-        private ILog logger;
+        private Logger logger;
 
-        public LogHelper(ILog log)
+        public LogHelper(Logger log)
         {
             this.logger = log;
         }
 
-        public void Info(object message)
+        public void Info(string message)
         {
             this.logger.Info(message);
         }
 
-        public void Info(object message, Exception e)
+        public void Info(string message, Exception e)
         {
             this.logger.Info(message, e);
         }
 
-        public void Debug(object message)
+        public void Debug(string message)
         {
             this.logger.Debug(message);
         }
 
-        public void Debug(object message, Exception e)
+        public void Debug(string message, Exception e)
         {
             this.logger.Debug(message, e);
         }
 
-        public void Warning(object message)
+        public void Warning(string message)
         {
             this.logger.Warn(message);
         }
 
-        public void Warning(object message, Exception e)
+        public void Warning(string message, Exception e)
         {
             this.logger.Warn(message, e);
         }
 
-        public void Error(object message)
+        public void Error(string message)
         {
             this.logger.Error(message);
         }
 
-        public void Error(object message, Exception e)
+        public void Error(string message, Exception e)
         {
             this.logger.Error(message, e);
         }
 
-        public void Fatal(object message)
+        public void Fatal(string message)
         {
             this.logger.Fatal(message);
         }
 
-        public void Fatal(object message, Exception e)
+        public void Fatal(string message, Exception e)
         {
             this.logger.Fatal(message, e);
         }
@@ -69,7 +66,7 @@ namespace NBCZ.Common
         /// <summary>
         /// Request日志写入
         /// </summary>
-        public static void WrtieRequestLog(LogLevel logLevel, string message)
+        public static void WriteRequestLog(LogLevel logLevel, string message)
         {
             Task.Run(() =>
             {
@@ -124,7 +121,7 @@ namespace NBCZ.Common
 
         public static LogHelper GetLogger(Type type)
         {
-            return new LogHelper(LogManager.GetLogger(type));
+            return new LogHelper(LogManager.GetLogger(type.FullName));
         }
 
         public static LogHelper GetLogger(string str)

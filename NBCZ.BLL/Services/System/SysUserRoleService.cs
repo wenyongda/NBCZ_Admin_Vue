@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Infrastructure.Extensions;
-using NBCZ.BLL.Services.IService;
+using NBCZ.BLL.Services.System.IService;
 using NBCZ.Common;
 using NBCZ.DBUtility;
 using NBCZ.Model.System;
@@ -8,7 +8,7 @@ using NBCZ.Model.System.Dto;
 using SqlSugar;
 using ZR.Model;
 
-namespace NBCZ.BLL.Services
+namespace NBCZ.BLL.Services.System
 {
     /// <summary>
     /// 用户角色

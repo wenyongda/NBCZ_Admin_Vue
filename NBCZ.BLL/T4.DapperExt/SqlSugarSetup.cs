@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Configuration;
-using System.Linq;
 using Autofac;
-using log4net;
+using NLog;
 using SqlSugar;
 
 namespace NBCZ.BLL.T4.DapperExt
 {
     public static class SqlSugarSetup
     {
-        private static ILog log = LogManager.GetLogger(typeof(SqlSugarSetup));
+        private static Logger log = LogManager.GetCurrentClassLogger();
 
         private static readonly string connStr = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
 

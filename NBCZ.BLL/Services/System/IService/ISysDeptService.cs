@@ -4,7 +4,7 @@ using NBCZ.Model.System.Dto;
 using NBCZ.Model.System.Vo;
 using ZR.ServiceCore.Model;
 
-namespace NBCZ.BLL.Services.IService
+namespace NBCZ.BLL.Services.System.IService
 {
     public interface ISysDeptService : IBaseService<SysDept>
     {

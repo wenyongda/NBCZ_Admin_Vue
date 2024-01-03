@@ -53,7 +53,6 @@ service.interceptors.response.use(
     }
     // 未设置状态码则默认成功状态
     const { code, msg } = res.data
-    console.log(res.data)
 
     // 二进制数据则直接返回
     if (res.request.responseType === 'blob' || res.request.responseType === 'arraybuffer') {

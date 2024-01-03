@@ -2,9 +2,8 @@
 using System.IO;
 using System.Threading.Tasks;
 using NBCZ.Model.System;
-using ZR.ServiceCore.Model;
 
-namespace NBCZ.BLL.Services.IService
+namespace NBCZ.BLL.Services.System.IService
 {
     public interface ISysFileService : IBaseService<SysFile>
     {

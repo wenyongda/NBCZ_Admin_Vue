@@ -3,7 +3,7 @@ using NBCZ.Model.System;
 using NBCZ.Model.System.Dto;
 using ZR.Model;
 
-namespace NBCZ.BLL.Services.IService
+namespace NBCZ.BLL.Services.System.IService
 {
     public interface ISysRoleService : IBaseService<SysRole>
     {

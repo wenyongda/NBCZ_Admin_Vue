@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
 using System.Web;
 using System.Web.Http;
-using Infrastructure.Extensions;
 using Infrastructure.Model;
 using Mapster;
-using NBCZ.BLL.Services.IService;
+using NBCZ.BLL.Services.System.IService;
 using NBCZ.Common;
 using NBCZ.Common.CustomException;
 using NBCZ.Model.System;
 using NBCZ.Model.System.Dto;
 using NBCZ.Web.Api.jwt;
-using WebApi.Jwt;
 
 namespace NBCZ.Web.Api.Controllers.System
 {
@@ -21,7 +17,7 @@ namespace NBCZ.Web.Api.Controllers.System
     /// 登录
     /// </summary>
     // [ApiExplorerSettings(GroupName = "sys")]
-    // [Verify]
+    [Verify]
     public class SysLoginController : BaseController
     {
         //static readonly NLog.Logger logger = NLog.LogManager.GetLogger("LoginController");
@@ -66,7 +62,7 @@ namespace NBCZ.Web.Api.Controllers.System
         /// </summary>
         /// <param name="loginBody">登录对象</param>
         /// <returns></returns>
-        // [AllowAnonymous]
+        [AllowAnonymous]
         [Route("login")]
         [HttpPost]
         // [Log(Title = "登录")]
@@ -124,7 +120,7 @@ namespace NBCZ.Web.Api.Controllers.System
         /// 获取用户信息
         /// </summary>
         /// <returns></returns>
-        [Verify]
+        // [Verify]
         [HttpGet, Route("getInfo")]
         public IHttpActionResult GetUserInfo()
         {
@@ -145,7 +141,7 @@ namespace NBCZ.Web.Api.Controllers.System
         /// 获取路由信息
         /// </summary>
         /// <returns></returns>
-        [Verify]
+        // [Verify]
         [HttpGet, Route("getRouters")]
         public IHttpActionResult GetRouters()
         {

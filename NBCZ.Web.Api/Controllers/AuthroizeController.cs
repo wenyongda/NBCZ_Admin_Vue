@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Linq;
-using System.Web;
 using System.Web.Http;
 using NBCZ.BLL;
-using NBCZ.BLL.Services.IService;
 using NBCZ.Common;
 using NBCZ.Model;
 using SqlSugar;
